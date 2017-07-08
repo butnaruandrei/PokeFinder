@@ -121,3 +121,5 @@ Pods/
 /*.gcno
 
 # End of https://www.gitignore.io/api/swift,xcode,macos
+
+PokeSearch/GoogleService-Info.plist

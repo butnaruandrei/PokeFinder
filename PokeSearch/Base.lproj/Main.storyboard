@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PokeSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,166 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-4h-8Tu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-Za-jef">
+                                <rect key="frame" x="16" y="607" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Nhd-0w-ZaD"/>
+                                    <constraint firstAttribute="height" constant="50" id="m6m-ZZ-dBj"/>
+                                </constraints>
+                                <state key="normal" image="pokeball"/>
+                                <connections>
+                                    <segue destination="n9g-BZ-Ebc" kind="presentation" id="0r0-hY-bnM"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9dh-Za-jef" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="3ez-j9-h3M"/>
+                            <constraint firstAttribute="trailing" secondItem="xfU-4h-8Tu" secondAttribute="trailing" id="95P-oT-VSh"/>
+                            <constraint firstItem="xfU-4h-8Tu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EVj-LK-vTw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9dh-Za-jef" secondAttribute="bottom" constant="10" id="d3A-Sk-akA"/>
+                            <constraint firstItem="xfU-4h-8Tu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dvR-0c-s6p"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xfU-4h-8Tu" secondAttribute="bottom" id="r6I-PA-Amn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="xfU-4h-8Tu" id="NBt-D7-eC3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="WmC-Mb-945">
+            <objects>
+                <viewController id="n9g-BZ-Ebc" customClass="CardViewController" customModule="PokeSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qXl-vh-jk7"/>
+                        <viewControllerLayoutGuide type="bottom" id="vCY-jY-CCr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6mJ-W9-kV6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HD4-QJ-4fU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1e3-O8-Ath"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Select Pokemon" id="gjv-uF-c3G">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gpR-m4-VXC">
+                                            <connections>
+                                                <action selector="dismiss:" destination="n9g-BZ-Ebc" id="WKD-Fo-SI6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" placeholder="Search Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="OHg-AF-1KM">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Rxw-Sy-VLS"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="MbT-4v-w06">
+                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MXU-qF-UeD">
+                                <rect key="frame" x="20" y="108" width="335" height="539"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJa-Un-mUB">
+                                    <size key="itemSize" width="110" height="110"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokeCell" id="kUD-hq-Hm3" customClass="PokeCell" customModule="PokeSearch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdi-1j-Myi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="MTG-5m-LVB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulbasaur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luR-uH-Npb">
+                                                    <rect key="frame" x="0.0" y="90" width="110" height="20"/>
+                                                    <color key="backgroundColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Isq-rO-e8K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="MTG-5m-LVB" secondAttribute="trailing" id="31M-E4-6cj"/>
+                                            <constraint firstItem="Jdi-1j-Myi" firstAttribute="top" secondItem="kUD-hq-Hm3" secondAttribute="top" id="54Y-uI-ELu"/>
+                                            <constraint firstAttribute="trailing" secondItem="luR-uH-Npb" secondAttribute="trailing" id="9O3-IJ-ZXV"/>
+                                            <constraint firstItem="luR-uH-Npb" firstAttribute="top" secondItem="MTG-5m-LVB" secondAttribute="bottom" id="9Yk-gK-wP1"/>
+                                            <constraint firstItem="luR-uH-Npb" firstAttribute="leading" secondItem="kUD-hq-Hm3" secondAttribute="leading" id="SPU-Ul-mOY"/>
+                                            <constraint firstItem="MTG-5m-LVB" firstAttribute="top" secondItem="kUD-hq-Hm3" secondAttribute="top" id="YTk-II-I9Y"/>
+                                            <constraint firstItem="MTG-5m-LVB" firstAttribute="leading" secondItem="kUD-hq-Hm3" secondAttribute="leading" id="ecF-0t-PHf"/>
+                                            <constraint firstAttribute="bottom" secondItem="luR-uH-Npb" secondAttribute="bottom" id="fnE-pj-bfN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jdi-1j-Myi" secondAttribute="trailing" id="mN3-kM-ebG"/>
+                                            <constraint firstItem="Jdi-1j-Myi" firstAttribute="leading" secondItem="kUD-hq-Hm3" secondAttribute="leading" id="qw3-nv-ihv"/>
+                                            <constraint firstAttribute="bottom" secondItem="Jdi-1j-Myi" secondAttribute="bottom" id="uiS-aj-tHs"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="luR-uH-Npb" id="9Fm-Bc-VAF"/>
+                                            <outlet property="thumbImg" destination="MTG-5m-LVB" id="I42-fr-vzx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vCY-jY-CCr" firstAttribute="top" secondItem="MXU-qF-UeD" secondAttribute="bottom" constant="20" id="1qj-rI-1cQ"/>
+                            <constraint firstItem="HD4-QJ-4fU" firstAttribute="leading" secondItem="6mJ-W9-kV6" secondAttribute="leading" id="3vl-4a-7bL"/>
+                            <constraint firstItem="vCY-jY-CCr" firstAttribute="top" secondItem="MbT-4v-w06" secondAttribute="bottom" id="4xJ-qt-VMq"/>
+                            <constraint firstItem="MXU-qF-UeD" firstAttribute="leading" secondItem="6mJ-W9-kV6" secondAttribute="leading" constant="20" id="6WO-LF-eg8"/>
+                            <constraint firstAttribute="trailing" secondItem="HD4-QJ-4fU" secondAttribute="trailing" id="9Vx-KV-iPp"/>
+                            <constraint firstItem="HD4-QJ-4fU" firstAttribute="top" secondItem="6mJ-W9-kV6" secondAttribute="top" id="TUm-nS-JF9"/>
+                            <constraint firstItem="OHg-AF-1KM" firstAttribute="leading" secondItem="6mJ-W9-kV6" secondAttribute="leading" id="gMQ-ll-d2q"/>
+                            <constraint firstAttribute="trailing" secondItem="MbT-4v-w06" secondAttribute="trailing" id="iWE-gE-J8S"/>
+                            <constraint firstItem="MbT-4v-w06" firstAttribute="leading" secondItem="6mJ-W9-kV6" secondAttribute="leading" id="kIO-t0-rFY"/>
+                            <constraint firstItem="MbT-4v-w06" firstAttribute="top" secondItem="OHg-AF-1KM" secondAttribute="bottom" id="meu-f7-X29"/>
+                            <constraint firstAttribute="trailing" secondItem="MXU-qF-UeD" secondAttribute="trailing" constant="20" id="nov-A7-w2a"/>
+                            <constraint firstItem="MXU-qF-UeD" firstAttribute="top" secondItem="OHg-AF-1KM" secondAttribute="bottom" constant="20" id="nzB-3x-Hc8"/>
+                            <constraint firstAttribute="trailing" secondItem="OHg-AF-1KM" secondAttribute="trailing" id="q5e-LK-mRd"/>
+                            <constraint firstItem="OHg-AF-1KM" firstAttribute="top" secondItem="HD4-QJ-4fU" secondAttribute="bottom" id="umg-zX-6zK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collection" destination="MXU-qF-UeD" id="pua-aM-89g"/>
+                        <outlet property="searchBar" destination="OHg-AF-1KM" id="JqA-h1-74h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIh-eU-Ieh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016.8" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1" width="120" height="120"/>
+        <image name="bg" width="1920" height="1200"/>
+        <image name="pokeball" width="97" height="96"/>
+    </resources>
 </document>
